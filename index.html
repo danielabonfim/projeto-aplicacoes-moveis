@@ -10,7 +10,7 @@
   <body>
 
 
-    <button class="fc spawned" type="button">
+    <button id="fortune_cookie" class="fc spawned" type="button">
         <div class="fc-part left"></div>
         <div class="fc-part right"></div>
         <div class="fc-crumbs">
@@ -23,7 +23,7 @@
             <div class="fc-crumb"></div>
             <div class="fc-crumb"></div>
         </div>
-        <div class="fc-fortune">
+        <div class="fc-fortune d-none">
             <p class="fc-fortune-text">No fortune</p>
             <p class="fc-lucky-numbers">Lucky Numbers <span>?, ?, ?, ?, ?, ?</span></p>
         </div>
@@ -31,6 +31,7 @@
 
     <script src="js/cookie.js"></script>  
     <script src="js/jquery-3.7.0.min.js"></script>  
+    <script src="js/axios.min.js"></script>  
 
   </body>
 
