@@ -134,10 +134,13 @@ function app() {
 
   $("#save_fortune").on("click", ()=> lc.addFortuneToList(currentFortune))
   $("#saved_list").on("click", ()=>{
+    $("#saved_list").addClass("selected");
     renderList(lc);
     $("#fortune_list").removeClass("d-none");
     $("#fortune_cookie").addClass("d-none");
     
+    $("#save_fortune").addClass("d-none");
+    $("#back_to_cookie").removeClass("d-none");
   })
 
 

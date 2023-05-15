@@ -42,7 +42,7 @@ button {
 	color: rgba(217, 127, 158, 1);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover, .selected {
 	background-color: rgb(255, 255, 255);
 	border-color: rgb(158, 91, 114);
 	color: rgb(158, 91, 114);
