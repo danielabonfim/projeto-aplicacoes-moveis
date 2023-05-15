@@ -3,27 +3,31 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Biscoito da sorte</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/cookie.css" rel="stylesheet">
     
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
   </head>
   <body>
-    <p class="fs-1 d-flex justify-content-center mt-5">Abra o biscoito e descubra sua sorte!</p>
+    <p class="fs-1 d-flex justify-content-center mt-5 fw-bold">Abra o biscoito e descubra sua sorte!</p>
 
     <div class="d-grid gap-4 d-md-flex justify-content-center mt-5">
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-secondary">
             <?xml version="1.0" encoding="utf-8"?>
             <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-            <svg class="btn-icon" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg class="btn-icon-secondary" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
             <style type="text/css">
-                .st0{fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+                .st0{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
             </style>
             <path class="st0" d="M24,28H8c-2.2,0-4-1.8-4-4V8c0-2.2,1.8-4,4-4h16c2.2,0,4,1.8,4,4v16C28,26.2,26.2,28,24,28z"/>
             <line class="st0" x1="10" y1="16" x2="22" y2="16"/>
@@ -31,7 +35,7 @@
             <line class="st0" x1="10" y1="20" x2="22" y2="20"/>
             </svg>
             
-        Salvos
+        Sortes salvas
         </button>
 
         <button type="button" class="btn btn-primary">
@@ -54,15 +58,51 @@
             <div class="fc-crumb"></div>
             <div class="fc-crumb"></div>
             <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
         </div>
         <div class="fc-fortune d-none">
             <h3 class="fc-fortune-text m-0">No fortune</h3>
         </div>
+
+
+
+        <ol id="fortune_list" class="list-group list-group-numbered d-none">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+              </div>
+              <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+              </div>
+              <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">Subheading</div>
+                Content for list item
+              </div>
+              <span class="badge bg-primary rounded-pill">14</span>
+            </li>
+        </ol>
+
+
     </button>
 
     <script src="js/cookie.js"></script>  
     <script src="js/jquery-3.7.0.min.js"></script>  
-    <script src="js/axios.min.js"></script>  
+    <script src="js/axios.min.js"></script>
 
   </body>
 

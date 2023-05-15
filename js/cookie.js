@@ -12,17 +12,52 @@ class FortuneList {
 }
 
 class Fortune {
-  constructor(id, text) {
+  constructor(id, text, timestamp) {
     this.id = id;
     this.text = text;
+    this.timestamp = timestamp
   }
 
   toJson() {
     return {
       "id": this.id,
-      "text": this.text
+      "text": this.text,
+      "timestamp": this.timestamp
     }
   }
+}
+
+class LocalStorage{
+  constructor(){
+    this.fortuneList = "fortuneList";
+  }
+
+  getFortuneList(){
+    const fortuneList = [];
+    let localStorageList = localStorage.getItem(this.fortuneList)?? [];
+    localStorageList = JSON.parse(fortuneList);
+
+    localStorageList.array.forEach(fortune => {
+      new Fortune(
+        fortune.id,
+        fortune.text,
+        fortune.timestamp
+      )
+    });
+
+    return fortuneList;
+
+  }
+
+  addFortuneList(fortune){
+    let fortuneList = localStorage.getItem(this.fortuneList) ?? [];
+    fortuneList = JSON.parse(fortuneList);
+    
+    fortuneList.push(fortune.toJson);
+
+    localStorage.setItem(this.fortuneList, JSON.stringify(fortuneList));
+  }
+
 }
 
 
@@ -34,7 +69,7 @@ async function getFortune(){
       }
     );
     console.log(response)
-    return  new Fortune(response.data.slip.id, response.data.slip.advice,);
+    return  new Fortune(response.data.slip.id, response.data.slip.advice, new Date());
   }catch(e){
     console.log(e);
   };
@@ -66,7 +101,12 @@ async function nextState(){
 
 
 addEventListener("load",app);
+
 function app() {
+  const lc = new LocalStorage();
+
+
+  $(".btn-secondary").on("mouseenter", () => $(".btn-icon-secondary").addClass("stroke-seconday")).on("mouseleave", ()=> $(".btn-icon-secondary").removeClass("stroke-seconday"));
   $(FC_BTN).on("click", ()=>{
     nextState();
   })
