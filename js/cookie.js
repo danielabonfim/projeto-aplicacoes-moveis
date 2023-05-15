@@ -34,10 +34,10 @@ class LocalStorage{
   }
 
   getFortuneList(){
-    const localStorageList = localStorage.getItem(this.fortuneList)
-    const fortuneList = localStorageList ? JSON.parse(fortuneList) : [];
+    const localStorageList = localStorage.getItem(this.fortuneList);
+    const fortuneList = localStorageList ? JSON.parse(localStorageList) : [];
 
-    localStorageList.array.forEach(fortune => {
+    fortuneList.forEach(fortune => {
       new Fortune(
         fortune.id,
         fortune.text,
@@ -51,11 +51,10 @@ class LocalStorage{
 
   addFortuneToList(fortune){
     const localStorageList = localStorage.getItem(this.fortuneList)
-    const fortuneList = localStorageList ? JSON.parse(fortuneList) : [];
+    const fortuneList = localStorageList ? JSON.parse(localStorageList) : [];
     fortuneList.push(fortune.toJson());
     localStorage.setItem(this.fortuneList, JSON.stringify(fortuneList));
   }
-
 }
 
 
@@ -67,7 +66,7 @@ async function getFortune(){
       }
     );
     console.log(response)
-    return  new Fortune(response.data.slip.id, response.data.slip.advice, new Date());
+    return  new Fortune(response.data.slip.id, response.data.slip.advice, Date.now());
   }catch(e){
     console.log(e);
   };
@@ -98,6 +97,23 @@ async function nextState(){
   }
 };
 
+function renderList(localStorage){
+  const fortuneList = localStorage.getFortuneList();
+
+  fortuneList.forEach(fortune =>{
+    $("#fortune_list").append(
+      `
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">${fortune.timestamp}</div>
+        ${fortune.text}
+      </div>
+      <span id="delete_${fortune.timestamp}" class="badge bg-primary rounded-pill">14</span>
+    </li>
+    `
+    )
+  })
+}
 
 addEventListener("load",app);
 
@@ -117,4 +133,12 @@ function app() {
   })
 
   $("#save_fortune").on("click", ()=> lc.addFortuneToList(currentFortune))
+  $("#saved_list").on("click", ()=>{
+    renderList(lc);
+    $("#fortune_list").removeClass("d-none");
+    $("#fortune_cookie").addClass("d-none");
+    
+  })
+
+
 }

@@ -21,7 +21,7 @@
     <p class="fs-1 d-flex justify-content-center mt-5 fw-bold">Abra o biscoito e descubra sua sorte!</p>
 
     <div class="d-grid gap-4 d-md-flex justify-content-center mt-5">
-        <button type="button" class="btn btn-secondary">
+        <button id="saved_list" type="button" class="btn btn-secondary">
             <?xml version="1.0" encoding="utf-8"?>
             <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
             <svg class="btn-icon-secondary" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -70,35 +70,17 @@
         <div class="fc-fortune d-none">
             <h3 class="fc-fortune-text m-0">No fortune</h3>
         </div>
-
-
-
-        <ol id="fortune_list" class="list-group list-group-numbered d-none">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-              </div>
-              <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-              </div>
-              <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Subheading</div>
-                Content for list item
-              </div>
-              <span class="badge bg-primary rounded-pill">14</span>
-            </li>
-        </ol>
-
-
     </button>
+    
+    <div class="d-flex justify-content-center"> 
+      <div class="col-md-8 m-4">
+        <ol id="fortune_list" class="list-group list-group-numbered d-none">
+      </ol>
+      </div>
+    </div>
+    
+    
+    
 
     <script src="js/cookie.js"></script>  
     <script src="js/jquery-3.7.0.min.js"></script>  
