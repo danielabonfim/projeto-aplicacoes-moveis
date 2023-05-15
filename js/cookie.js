@@ -1,4 +1,5 @@
 const FC_BTN = "#fortune_cookie";
+let currentFortune;
 
 class FortuneList {
   constructor(fortuneList) {
@@ -33,9 +34,8 @@ class LocalStorage{
   }
 
   getFortuneList(){
-    const fortuneList = [];
-    let localStorageList = localStorage.getItem(this.fortuneList)?? [];
-    localStorageList = JSON.parse(fortuneList);
+    const localStorageList = localStorage.getItem(this.fortuneList)
+    const fortuneList = localStorageList ? JSON.parse(fortuneList) : [];
 
     localStorageList.array.forEach(fortune => {
       new Fortune(
@@ -49,12 +49,10 @@ class LocalStorage{
 
   }
 
-  addFortuneList(fortune){
-    let fortuneList = localStorage.getItem(this.fortuneList) ?? [];
-    fortuneList = JSON.parse(fortuneList);
-    
-    fortuneList.push(fortune.toJson);
-
+  addFortuneToList(fortune){
+    const localStorageList = localStorage.getItem(this.fortuneList)
+    const fortuneList = localStorageList ? JSON.parse(fortuneList) : [];
+    fortuneList.push(fortune.toJson());
     localStorage.setItem(this.fortuneList, JSON.stringify(fortuneList));
   }
 
@@ -82,10 +80,11 @@ async function nextState(){
 
   // open cookie
   if ($(FC_BTN).hasClass(spawned)) {
-    const fortune = await getFortune();
-    $(".fc-fortune-text").html(fortune.text);
+    currentFortune = await getFortune();
+    $(".fc-fortune-text").html(currentFortune.text);
 
-
+    $("#save_fortune").removeClass("disabled");
+    
     $(FC_BTN).removeClass(spawned);
     $('.fc-fortune').removeClass('d-none')
     $(FC_BTN).addClass(opened);
@@ -105,9 +104,17 @@ addEventListener("load",app);
 function app() {
   const lc = new LocalStorage();
 
+  $(".btn-secondary").on(
+    "mouseenter",
+    () => $(".btn-icon-secondary").addClass("stroke-seconday"))
+    .on(
+      "mouseleave",
+      ()=> $(".btn-icon-secondary").removeClass("stroke-seconday")
+    );
 
-  $(".btn-secondary").on("mouseenter", () => $(".btn-icon-secondary").addClass("stroke-seconday")).on("mouseleave", ()=> $(".btn-icon-secondary").removeClass("stroke-seconday"));
   $(FC_BTN).on("click", ()=>{
     nextState();
   })
+
+  $("#save_fortune").on("click", ()=> lc.addFortuneToList(currentFortune))
 }

@@ -17,6 +17,11 @@ button {
 	cursor: pointer;
 }
 
+.btn.disabled, .btn:disabled{
+    background-color: rgb(165, 165, 165);
+    border-color: rgb(165, 165, 165);
+}
+
 .btn-primary{
 	background-color: rgba(217, 127, 158, 1);
 	border-color: rgba(217, 127, 158, 1);
@@ -25,8 +30,8 @@ button {
 }
 
 .btn-primary:hover {
-	background-color: rgba(115, 188, 198, 1);
-	border-color: rgba(115, 188, 198, 1);
+	background-color: rgb(158, 91, 114);
+	border-color: rgb(158, 91, 114);
 }
 
 .btn-secondary{
@@ -39,8 +44,8 @@ button {
 
 .btn-secondary:hover {
 	background-color: rgb(255, 255, 255);
-	border-color: rgba(115, 188, 198, 1);
-	color: rgba(115, 188, 198, 1);
+	border-color: rgb(158, 91, 114);
+	color: rgb(158, 91, 114);
 }
 
 .btn-icon, .btn-icon-secondary{
@@ -54,7 +59,7 @@ button {
 }
 
 .stroke-seconday{
-	stroke:rgba(115, 188, 198, 1);
+	stroke:rgb(158, 91, 114);
 }
 
 /* Cookie */
