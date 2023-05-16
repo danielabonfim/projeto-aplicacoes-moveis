@@ -1,11 +1,8 @@
-const FC_BTN = "#fortune_cookie";
 let currentFortune;
 
 class FortuneListService {
 
-  constructor(
-    fortuneList 
-  ){
+  constructor(){
     this.fortuneList = "fortuneList";
   }
 
@@ -20,12 +17,6 @@ class FortuneListService {
 
     if(fortuneList.length !== 1){
       const index = fortuneList.findIndex((fortune) => {
-        console.log(fortune.timestamp)
-        console.log(typeof fortune.timestamp)
-  
-        console.log(timestamp)
-        console.log(typeof timestamp)
-  
         return fortune.timestamp == timestamp
       });
   
@@ -92,27 +83,28 @@ async function getFortune(){
 
 }
 
-async function nextState(){
+async function toogleCookieState(){
   const spawned = "spawned";
   const opened = "opened";
 
   // open cookie
-  if ($(FC_BTN).hasClass(spawned)) {
+  if ($("#fortune_cookie").hasClass(spawned)) {
     currentFortune = await getFortune();
     $(".fc-fortune-text").html(currentFortune.text);
 
     $("#save_fortune").removeClass("disabled");
     
-    $(FC_BTN).removeClass(spawned);
+    $("#fortune_cookie").removeClass(spawned);
     $('.fc-fortune').removeClass('d-none')
-    $(FC_BTN).addClass(opened);
+    $("#fortune_cookie").addClass(opened);
 
 
   // new cookie
   } else {
-    $(FC_BTN).removeClass(opened);
+    $("#save_fortune").addClass("disabled");
+    $("#fortune_cookie").removeClass(opened);
      $('.fc-fortune').addClass('d-none')
-    $(FC_BTN).addClass(spawned);
+    $("#fortune_cookie").addClass(spawned);
   }
 };
 
@@ -166,8 +158,8 @@ function app() {
       ()=> $(".btn-icon-secondary").removeClass("stroke-seconday")
     );
 
-  $(FC_BTN).on("click", ()=>{
-    nextState();
+  $("#fortune_cookie").on("click", ()=>{
+    toogleCookieState();
   })
 
   function toggleCookieAndList(){
@@ -196,4 +188,6 @@ function app() {
     $("#back_to_cookie").off();
     $("#back_to_cookie").on("click", toggleCookieAndList);
   })
+
+
 }
