@@ -20,7 +20,7 @@ class FortuneListService {
         return fortune.timestamp == timestamp
       });
   
-      fortuneList = fortuneList.splice(index, 1);
+      fortuneList.splice(index, 1);
     }else{
       fortuneList = [];
     }
@@ -83,9 +83,11 @@ async function getFortune(){
 
 }
 
-async function toogleCookieState(){
+async function toggleCookieState(){
   const spawned = "spawned";
   const opened = "opened";
+  
+  changeToSaveFortuneUi();
 
   // open cookie
   if ($("#fortune_cookie").hasClass(spawned)) {
@@ -144,6 +146,17 @@ function renderList(fortuneListService){
   })
 }
 
+function changeToBtnSavedUi(){
+  $("#saved_alert_btn").removeClass("d-none");
+  $("#save_fortune").addClass("d-none");
+}
+
+function changeToSaveFortuneUi(){
+  $("#saved_alert_btn").addClass("d-none");
+  $("#save_fortune").removeClass("d-none");
+}
+
+
 
 addEventListener("load",app);
 
@@ -159,7 +172,7 @@ function app() {
     );
 
   $("#fortune_cookie").on("click", ()=>{
-    toogleCookieState();
+    toggleCookieState();
   })
 
   function toggleCookieAndList(){
@@ -167,6 +180,8 @@ function app() {
       $("#fortune_list").removeClass("d-none");
       $("#fortune_cookie").addClass("d-none");
       
+      
+      $("#saved_alert_btn").addClass("d-none");
       $("#save_fortune").addClass("d-none");
       $("#back_to_cookie").removeClass("d-none");
     }else{
@@ -178,8 +193,12 @@ function app() {
     }
   }
 
-  $("#save_fortune").on("click", ()=> fortuneListService.addFortuneToList(currentFortune))
-  $("#saved_list").on("click", ()=>{
+  $("#save_fortune").on("click", ()=> {
+    fortuneListService.addFortuneToList(currentFortune);
+    changeToBtnSavedUi();
+  })
+
+  $("#saved_list").on("click", ()=>{ 
     $("#saved_list").addClass("selected");
     renderList(fortuneListService);
     
