@@ -62,6 +62,10 @@ button {
 	stroke:rgb(158, 91, 114);
 }
 
+.cursor-icon{
+	cursor: pointer;
+}
+
 /* Cookie */
 .fc {
 	background: transparent;

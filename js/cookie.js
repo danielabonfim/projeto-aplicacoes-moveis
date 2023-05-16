@@ -2,6 +2,13 @@ const FC_BTN = "#fortune_cookie";
 let currentFortune;
 
 class FortuneListService {
+
+  constructor(
+    fortuneList 
+  ){
+    this.fortuneList = "fortuneList";
+  }
+
   toJson() {
     const lis = [];
     this.fortuneList.forEach(fortune => lis.push(fortune.toJson()))
@@ -11,8 +18,22 @@ class FortuneListService {
     const localStorageList = localStorage.getItem(this.fortuneList)
     let fortuneList = localStorageList ? JSON.parse(localStorageList) : [];
 
-    const index = fortuneList.findIndex((fortune) => fortune.timestamp === timestamp);
-    fortuneList = fortuneList.splice(index, 1);
+    if(fortuneList.length !== 1){
+      const index = fortuneList.findIndex((fortune) => {
+        console.log(fortune.timestamp)
+        console.log(typeof fortune.timestamp)
+  
+        console.log(timestamp)
+        console.log(typeof timestamp)
+  
+        return fortune.timestamp == timestamp
+      });
+  
+      fortuneList = fortuneList.splice(index, 1);
+    }else{
+      fortuneList = [];
+    }
+   
     localStorage.setItem(this.fortuneList, JSON.stringify(fortuneList));
   }
 
@@ -44,7 +65,7 @@ class Fortune {
   constructor(id, text, timestamp) {
     this.id = id;
     this.text = text;
-    this.timestamp = timestamp
+    this.timestamp = timestamp.toString()
   }
 
   toJson() {
@@ -98,7 +119,7 @@ async function nextState(){
 function renderList(fortuneListService){
   const fortuneList = fortuneListService.getFortuneList();
   let html = ""
-  if(!fortuneList &&  !fortuneList.length){
+  if(fortuneList && !fortuneList.length){
     html = `
     <li id="no_fortune_msg"class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
@@ -115,7 +136,7 @@ function renderList(fortuneListService){
           <div class="fw-bold">${fortune.timestamp}</div>
           ${fortune.text}
         </div>
-        <img class="btn-icon-secondary" src = "trash-can.svg"/>
+        <img value="${fortune.timestamp}" class="delete btn-icon-secondary cursor-icon" src = "trash-can.svg"/>
        
       </li>
       `
@@ -123,6 +144,12 @@ function renderList(fortuneListService){
   }
 
   $("#fortune_list").html(html);
+
+  $(".delete").on("click", (e)=> {
+    const timeStamp = $(e.target).attr("value");
+    fortuneListService.removeFortune(timeStamp);
+    renderList(fortuneListService);
+  })
 }
 
 
@@ -169,8 +196,4 @@ function app() {
     $("#back_to_cookie").off();
     $("#back_to_cookie").on("click", toggleCookieAndList);
   })
-
-  // $("#delete").on("click", (e)=> {
-  //   $("#delete")
-  // })
 }
