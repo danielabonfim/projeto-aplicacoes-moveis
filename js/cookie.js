@@ -55,6 +55,15 @@ class LocalStorage{
     fortuneList.push(fortune.toJson());
     localStorage.setItem(this.fortuneList, JSON.stringify(fortuneList));
   }
+
+  removeFortune(timestamp){
+    const localStorageList = localStorage.getItem(this.fortuneList)
+    let fortuneList = localStorageList ? JSON.parse(localStorageList) : [];
+
+    const index = fortuneList.findIndex((fortune) => fortune.timestamp === timestamp);
+    fortuneList = fortuneList.splice(index, 1);
+    localStorage.setItem(this.fortuneList, JSON.stringify(fortuneList));
+  }
 }
 
 
@@ -108,12 +117,14 @@ function renderList(localStorage){
         <div class="fw-bold">${fortune.timestamp}</div>
         ${fortune.text}
       </div>
-      <span id="delete_${fortune.timestamp}" class="badge bg-primary rounded-pill">14</span>
+      <img class="btn-icon-secondary" src = "trash-can.svg"/>
+     
     </li>
     `
     )
   })
 }
+
 
 addEventListener("load",app);
 
@@ -143,5 +154,7 @@ function app() {
     $("#back_to_cookie").removeClass("d-none");
   })
 
-
+  // $("#delete").on("click", (e)=> {
+  //   $("#delete")
+  // })
 }
