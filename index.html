@@ -80,6 +80,7 @@
       </button>
     </div>
 
+    <div>
     <button id="fortune_cookie" class="fc spawned" type="button">
         <div class="fc-part left"></div>
         <div class="fc-part right"></div>
@@ -105,7 +106,7 @@
             <h3 class="fc-fortune-text m-0">No fortune</h3>
         </div>
     </button>
-    
+  </div>
     <div class="d-flex justify-content-center"> 
       <div class="col-md-8 m-4">
         <ol id="fortune_list" class="list-group list-group-numbered d-none">
@@ -115,6 +116,19 @@
     <script src="js/cookie.js"></script>  
     <script src="js/jquery-3.7.0.min.js"></script>  
     <script src="js/axios.min.js"></script>
+
+    <script>
+      let swRegistro = null;
+      if('serviceWorker' in navigator){
+        window.addEventListener("load", ()=>{
+          navigator.serviceWorker.register("service-worker.js").then((reg) => {
+
+            swRegistro = reg;
+            inicializaInstalacao();
+          });
+        });
+      }
+    </script>
 
   </body>
 

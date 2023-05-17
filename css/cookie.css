@@ -97,6 +97,8 @@ button {
 	height: 18em;
 	z-index: 2;
 }
+
+
 .left {
 	border-radius: 7em 1em 1em 7em / 50%;
 	box-shadow:
@@ -207,7 +209,7 @@ button {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 0.75em 1.5em 0.75em 3.75em;
+	padding: 0.75em  3.75em 0.75em 3.75em;
 	text-align: center;
 	width: 26em;
 	left: 0;
@@ -319,4 +321,70 @@ button {
 
 li{
 	font-size: 20px;
+}
+
+
+
+@media (max-width: 850px){
+	h3{
+		font-size: 16px
+	}
+
+	.left{
+		transform: rotate(25deg) scale(0.5);
+	}
+
+	.right{
+		transform: rotate(-25deg) scale(0.5);
+	}
+
+	.fc-crumb{
+		transform: scale(0.5);
+	}
+
+	.fc-fortune{
+		width: 100%;
+	}
+
+	.opened{
+		width: 100%;
+	}
+
+	.fc-crumbs{
+		height: 2em;
+	}
+
+@keyframes breakLeft {
+	from {
+		transform: translateX(0) rotate(25deg) scale(0.5);
+	}
+	30%, 40% {
+		transform: translateX(0) rotate(55deg) scale(0.5);
+	}
+	70%, 80% {
+		opacity: 1;
+		transform: translateX(-100%) rotate(50deg) scale(0.5);
+	}
+	to {
+		/* opacity: 0; */
+		transform: translateX(-100%) rotate(50deg) scale(0.5);
+	}
+}
+@keyframes breakRight {
+	from {
+		transform: translateX(0) rotate(-25deg) scale(0.5);
+	}
+	30%, 40% {
+		transform: translateX(0) rotate(-55deg) scale(0.5);
+	}
+	70%, 80% {
+		opacity: 1;
+		transform: translateX(100%) rotate(-50deg) scale(0.5);
+	}
+	to {
+		/* opacity: 0; */
+		transform: translateX(100%) rotate(-50deg) scale(0.5);
+	}
+}
+
 }
