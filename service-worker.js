@@ -27,8 +27,11 @@ self.addEventListener("install", installEvent => {
 
 self.addEventListener("fetch", fetchEvent => {
   fetchEvent.respondWith(
-    caches.match(fetchEvent.request).then(res => {
-      return res || fetch(fetchEvent.request)
-    })
+    fetch(evt.request).catch(()=>{
+      return caches.open(STATIC_CACHE).then((cache) =>{
+          return cache.match('offline.html');
+      });
+
+  })
   )
 })

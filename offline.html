@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fortune Cookie</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/cookie.css" rel="stylesheet">
+    
+    <link rel="manifest" href="manifest.json" />
+    <!-- ios support -->
+    <link rel="apple-touch-icon" href="images/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" href="images/icons/icon-96x96.png" />
+    <link rel="apple-touch-icon" href="images/icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" href="images/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" href="images/icons/icon-384x384.png" />
+    <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="##48466D" />
+    <meta name="theme-color" content="##48466D" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    
+    <div class="alert alert-warning" role="alert">
+      You are offline connect to the internet for better experience!
+    </div>
+    <p class="fs-1 d-flex justify-content-center mt-5 fw-bold terciary-color">Crack that cookie and find out your fortune!</p>
+
+    <div class="d-grid gap-4 d-md-flex justify-content-center mt-5">
+        <button id="saved_list" type="button" class="btn btn-secondary">
+            <?xml version="1.0" encoding="utf-8"?>
+            <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+            <svg class="btn-icon-secondary" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+            <style type="text/css">
+                .st0{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+            </style>
+            <path class="st0" d="M24,28H8c-2.2,0-4-1.8-4-4V8c0-2.2,1.8-4,4-4h16c2.2,0,4,1.8,4,4v16C28,26.2,26.2,28,24,28z"/>
+            <line class="st0" x1="10" y1="16" x2="22" y2="16"/>
+            <line class="st0" x1="10" y1="12" x2="22" y2="12"/>
+            <line class="st0" x1="10" y1="20" x2="22" y2="20"/>
+            </svg>
+            
+        Saved fortunes
+        </button>
+
+        <button id = "save_fortune" type="button" class="btn btn-primary disabled">
+          <img class="btn-icon" src = "resource/heart_stroke.svg"/> 
+            Save fortune
+        </button>
+
+        <button id = "saved_alert_btn" type="button" class="btn btn-success  d-none">
+          <img class="btn-icon" src = "resource/heart_full.svg"/>    
+          Fortune saved!
+        </button>
+
+        <button id = "back_to_cookie" type="button" class="btn btn-primary d-none ">
+          <?xml version="1.0" standalone="no"?>
+          <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+           "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+          <svg class="btn-icon-secondary" version="1.0" xmlns="http://www.w3.org/2000/svg"
+           width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+           preserveAspectRatio="xMidYMid meet">
+          
+          <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+          fill="#ffffff" stroke="none">
+          <path d="M4280 4944 c-22 -9 -197 -176 -470 -450 l-436 -435 -125 60 c-420
+          199 -870 269 -1319 205 -471 -67 -909 -281 -1251 -611 -387 -374 -616 -843
+          -669 -1372 -55 -549 120 -1124 474 -1565 140 -173 359 -371 541 -487 225 -144
+          258 -150 381 -74 341 211 600 495 780 853 l72 143 60 -123 c179 -362 446 -655
+          797 -873 111 -70 139 -68 282 14 225 128 464 333 629 537 402 500 566 1163
+          443 1789 -38 194 -90 346 -186 548 l-57 118 441 442 c383 383 442 447 448 479
+          15 81 15 81 -343 442 -386 387 -402 399 -492 360z m273 -562 l207 -207 -353
+          -353 -354 -353 -28 38 c-70 91 -262 277 -395 380 -6 5 693 703 705 703 6 0
+          104 -93 218 -208z m-1998 -358 c553 -82 1056 -407 1359 -876 263 -409 355
+          -911 256 -1397 -83 -407 -325 -808 -647 -1073 -84 -68 -260 -188 -278 -188 -6
+          0 -49 28 -96 61 -367 268 -611 645 -710 1095 -19 88 -22 141 -28 474 -6 353
+          -7 377 -26 410 -55 93 -200 98 -254 9 -16 -27 -19 -65 -24 -372 -6 -374 -16
+          -468 -68 -654 -82 -292 -240 -562 -455 -778 -90 -91 -285 -245 -309 -245 -7 0
+          -56 29 -109 65 -368 245 -636 592 -770 995 -173 521 -105 1102 186 1572 303
+          492 844 839 1413 907 50 6 104 13 120 15 57 8 340 -5 440 -20z"/>
+          </g>
+          </svg>
+            
+          Crack cookie
+      </button>
+    </div>
+
+    <div>
+    <button id="fortune_cookie" class="fc spawned" type="button">
+        <div class="fc-part left"></div>
+        <div class="fc-part right"></div>
+        <div class="fc-crumbs">
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+            <div class="fc-crumb"></div>
+        </div>
+        <div class="fc-fortune d-none">
+            <h3 class="fc-fortune-text m-0 terciary-color">No fortune</h3>
+        </div>
+    </button>
+  </div>
+    <div class="d-flex justify-content-center"> 
+      <div class="col-md-8 m-4">
+        <ol id="fortune_list" class="list-group list-group-numbered d-none">
+      </ol>
+      </div>
+    </div>
+    <script src="js/cookie.js"></script>  
+    <script src="js/jquery-3.7.0.min.js"></script>  
+    <script src="js/axios.min.js"></script>
+
+  </body>
+
+  
+</html>
