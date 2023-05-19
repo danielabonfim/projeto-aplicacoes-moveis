@@ -32,39 +32,3 @@ self.addEventListener("fetch", fetchEvent => {
     })
   )
 })
-
-
-// self.addEventListener("install", (evt) => {
-//   evt.waitUntil(
-//     caches.open(STATIC_CACHE).then((cache) => {
-//       return cache.addAll(STATIC_FILES);
-//     })
-//   );
-
-//   self.skipWaiting();
-// });
-
-// self.addEventListener("install", (evt) => {
-//   evt.waitUntil(
-//     caches.keys().then((keylist) => {
-//       return Promise.all(keylist.map((key) => {
-//         if (key !== STATIC_CACHE) {
-//           return caches.delete(key);
-//         }
-//       }));
-//     })
-//   );
-// });
-
-// self.addEventListener("fetch", (evt) => {
-//   if (evt.request.mode !== 'navigate') {
-//     return;
-//   }
-//   evt.respondWith(
-//     fetch(evt.request).catch(() => {
-//       return caches.open(STATIC_CACHE).then((cache) => {
-//         return cache.match('offline.html');
-//       });
-//     })
-//   );
-// });
