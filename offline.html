@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fortune Cookie</title>
+    <title>Biscoito da sorte</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/cookie.css" rel="stylesheet">
     
@@ -18,7 +18,7 @@
 
   </head>
   <body>
-    <p class="fs-1 d-flex justify-content-center mt-5 fw-bold terciary-color">Crack that cookie and find out your fortune!</p>
+    <p class="fs-1 d-flex justify-content-center mt-5 fw-bold">Abra o biscoito e descubra sua sorte!</p>
 
     <div class="d-grid gap-4 d-md-flex justify-content-center mt-5">
         <button id="saved_list" type="button" class="btn btn-secondary">
@@ -35,17 +35,17 @@
             <line class="st0" x1="10" y1="20" x2="22" y2="20"/>
             </svg>
             
-        Saved fortunes
+        Sortes salvas
         </button>
 
         <button id = "save_fortune" type="button" class="btn btn-primary disabled">
           <img class="btn-icon" src = "resource/heart_stroke.svg"/> 
-            Save fortune
+            Salvar sorte
         </button>
 
         <button id = "saved_alert_btn" type="button" class="btn btn-success  d-none">
           <img class="btn-icon" src = "resource/heart_full.svg"/>    
-          Fortune saved!
+          Sorte salva!
         </button>
 
         <button id = "back_to_cookie" type="button" class="btn btn-primary d-none ">
@@ -76,7 +76,7 @@
           </g>
           </svg>
             
-          Crack cookie
+          Abrir biscoito
       </button>
     </div>
 
@@ -103,7 +103,7 @@
             <div class="fc-crumb"></div>
         </div>
         <div class="fc-fortune d-none">
-            <h3 class="fc-fortune-text m-0 terciary-color">No fortune</h3>
+            <h3 class="fc-fortune-text m-0">No fortune</h3>
         </div>
     </button>
   </div>
@@ -116,6 +116,19 @@
     <script src="js/cookie.js"></script>  
     <script src="js/jquery-3.7.0.min.js"></script>  
     <script src="js/axios.min.js"></script>
+
+    <script>
+      let swRegistro = null;
+      if('serviceWorker' in navigator){
+        window.addEventListener("load", ()=>{
+          navigator.serviceWorker.register("service-worker.js").then((reg) => {
+
+            swRegistro = reg;
+            inicializaInstalacao();
+          });
+        });
+      }
+    </script>
 
   </body>
 

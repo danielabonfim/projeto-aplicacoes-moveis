@@ -129,7 +129,7 @@ function renderList(fortuneListService){
         <div class="ms-2 me-auto">
           ${fortune.text}
         </div>
-        <img value="${fortune.timestamp}" class="delete btn-icon-secondary cursor-icon" src = "trash-can.svg"/>
+        <img value="${fortune.timestamp}" class="delete btn-icon-secondary cursor-icon" src = "resource/trash-can.svg"/>
        
       </li>
       `
@@ -207,5 +207,12 @@ function app() {
     $("#back_to_cookie").on("click", toggleCookieAndList);
   })
 
-
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+      navigator.serviceWorker
+        .register("../serviceWorker.js")
+        .then(res => console.log("service worker registered"))
+        .catch(err => console.log("service worker not registered", err))
+    })
+  }
 }
